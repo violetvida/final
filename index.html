@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ข้อสอบกฎระเบียบโรงงาน (3 ส่วน) 🌿</title>
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&family=Noto+Sans+SC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#4fae7c;--pink-l:#e1f5ea;--lav:#3f9b8f;--lav-l:#dff3f0;--mint:#8fd6a0;--mint-l:#e6f7e9;--sun:#ffe08a;--ink:#33513f;--bad:#e2685f}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:'Mali','Noto Sans Thai','Tahoma',sans-serif;color:var(--ink);
+background:radial-gradient(circle at 12% 8%,#d7f0d9 0,transparent 32%),radial-gradient(circle at 90% 90%,#c9ebe0 0,transparent 35%),#f4fbf5;padding:16px}
+.app{max-width:760px;margin:0 auto}
+header{display:flex;align-items:center;gap:10px;justify-content:space-between;margin-bottom:12px}
+h1{font-size:1.1rem;margin:0}
+.chip{background:#fff;border-radius:99px;padding:6px 14px;font-weight:600;font-size:.82rem;box-shadow:0 3px 0 var(--pink-l)}
+.bar{height:14px;background:#fff;border-radius:99px;overflow:hidden;box-shadow:inset 0 0 0 3px var(--pink-l);margin-bottom:16px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--lav));border-radius:99px;transition:width .5s}
+.card{background:#fff;border-radius:28px;padding:22px;box-shadow:0 6px 0 var(--lav-l),0 14px 30px rgba(63,155,143,.18)}
+.end{text-align:center;padding:10px 0}
+.end .em{font-size:3.4rem}
+.end h2{margin:6px 0}
+.end p{line-height:1.7;margin:6px 0 16px}
+.parts{display:grid;gap:12px}
+.partbtn{display:flex;gap:12px;align-items:center;text-align:left;border:0;border-radius:20px;background:var(--lav-l);padding:14px 16px;cursor:pointer;box-shadow:0 4px 0 #bfe6dd}
+.partbtn:hover{transform:translateY(-2px)}
+.partbtn .ic{font-size:1.8rem}
+.partbtn b{display:block;font-size:1.02rem;color:var(--ink)}
+.partbtn small{color:#4d7a63}
+.tag{display:inline-block;font-size:.78rem;font-weight:700;padding:3px 12px;border-radius:99px;margin-bottom:10px;background:var(--mint-l);color:#2f7a52}
+.sent{background:var(--lav-l);border-radius:16px;padding:14px 16px;margin-bottom:16px;font:600 1.25rem/1.9 'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif}
+.sent .bn{display:inline-block;background:#fff;border-radius:8px;padding:0 8px;margin:0 2px;font:700 .95rem 'Mali',sans-serif;color:var(--lav);box-shadow:inset 0 0 0 2px var(--lav)}
+.sent .bn.ok{color:#2f7a52;box-shadow:inset 0 0 0 2px var(--mint)}
+.sent .bn.bad{color:var(--bad);box-shadow:inset 0 0 0 2px var(--bad)}
+.blanks{display:grid;gap:14px;margin-bottom:14px}
+.blk label{display:block;font-weight:700;margin-bottom:6px;font-size:.92rem}
+.blk input{width:100%;border:0;border-radius:14px;box-shadow:inset 0 0 0 2px var(--lav-l);padding:10px 14px;font:600 1.05rem 'Noto Sans SC','PingFang SC',sans-serif;color:var(--ink)}
+.blk input:focus{outline:none;box-shadow:inset 0 0 0 2px var(--lav)}
+.blk input.ok{box-shadow:inset 0 0 0 2px var(--mint);background:var(--mint-l)}
+.blk input.bad{box-shadow:inset 0 0 0 2px var(--bad);background:#ffe5e2}
+.blk .row{display:flex;flex-wrap:wrap;gap:8px}
+.chipopt{border:0;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 2px var(--lav-l);padding:8px 14px;font:600 1rem 'Noto Sans SC','PingFang SC',sans-serif;color:var(--ink);cursor:pointer}
+.chipopt.sel{background:var(--lav);color:#fff;box-shadow:none}
+.chipopt.ok{background:var(--mint);color:#fff;box-shadow:none}
+.chipopt.bad{background:var(--bad);color:#fff;box-shadow:none}
+.chipopt:disabled{cursor:default}
+.ask{display:flex;gap:10px;align-items:flex-start;margin-bottom:14px}
+.mascot{font-size:2.2rem;transition:transform .3s}
+.mascot.hop{animation:hop .6s}
+.bubble{background:var(--lav-l);border-radius:16px 16px 16px 4px;padding:10px 14px;flex:1;font-weight:600;line-height:1.6}
+.pilltrack{display:flex;flex-wrap:wrap;gap:8px;padding:14px;border-radius:20px;background:var(--pink-l);min-height:60px;margin-bottom:12px}
+.pillpool{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:14px;border-radius:20px;border:3px dashed var(--lav);margin-bottom:14px}
+.pill{border:0;border-radius:14px;background:var(--sun);box-shadow:0 4px 0 #e0c15a;color:var(--ink);font:600 1rem 'Noto Sans SC','PingFang SC',sans-serif;padding:9px 14px;cursor:pointer}
+.pill:hover{transform:translateY(-2px)}
+.pill.slotpill{background:#fff;box-shadow:inset 0 0 0 2px #ffc2b0}
+.pill.slotpill.filled{box-shadow:0 4px 0 var(--pink)}
+.pill.ghost{background:transparent;box-shadow:inset 0 0 0 2px var(--lav-l);color:transparent;cursor:default}
+.pill.ok{background:var(--mint-l);box-shadow:0 4px 0 var(--mint)}
+.pill.bad{background:#ffe0dd;box-shadow:0 4px 0 var(--bad);animation:shake .4s}
+.msg{min-height:1.6em;text-align:center;font-weight:700;margin-bottom:6px}
+.full{background:var(--mint-l);border-radius:16px;padding:10px 14px;margin-bottom:14px;font:500 1.05rem/1.7 'Noto Sans SC','PingFang SC',sans-serif;text-align:center}
+.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+button.b{font:700 1rem 'Mali',sans-serif;border:0;border-radius:99px;padding:12px 26px;cursor:pointer;color:#fff;background:var(--pink);box-shadow:0 5px 0 #367a56}
+button.b:active{transform:translateY(3px);box-shadow:0 2px 0 #367a56}
+button.b.g{background:#fff;color:var(--ink);box-shadow:0 5px 0 var(--lav-l),inset 0 0 0 2px var(--lav-l)}
+button.b.n{background:var(--mint);box-shadow:0 5px 0 #4fbf92}
+.hide{display:none!important}
+.fx{position:fixed;top:-30px;font-size:1.6rem;pointer-events:none;animation:fall 2s ease-in forwards;z-index:9}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@keyframes hop{40%{transform:translateY(-14px) rotate(-8deg)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:.6}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><h1 id="h1">🌿 ข้อสอบกฎระเบียบโรงงาน</h1><div class="chip" id="cnt"></div></header>
+<div class="bar"><i id="bar"></i></div>
+
+<div class="card" id="home">
+  <div class="end">
+    <div class="em">📋🐰</div>
+    <h2>เลือกส่วนที่จะทำ</h2>
+    <p>เนื้อหาชุดเดียวกัน (กฎโรงงาน 10 ข้อ) ทำได้ทั้ง 3 รูปแบบ</p>
+  </div>
+  <div class="parts">
+    <button class="partbtn" data-p="1"><span class="ic">✏️</span><span><b>ส่วนที่ 1 · เติมคำ (พิมพ์คำตอบ)</b><small>อ่านประโยคจีน แล้วพิมพ์คำที่หายไปเป็นภาษาจีน · 10 ข้อ</small></span></button>
+    <button class="partbtn" data-p="2"><span class="ic">🔘</span><span><b>ส่วนที่ 2 · เติมคำ (เลือกคำตอบ)</b><small>อ่านประโยคจีน แล้วแตะเลือกคำที่หายไป · 10 ข้อ</small></span></button>
+    <button class="partbtn" data-p="3"><span class="ic">🧩</span><span><b>ส่วนที่ 3 · เรียงคำ</b><small>อ่านคำแปลไทย แล้วเรียงกลุ่มคำภาษาจีนให้ถูก · 10 ข้อ</small></span></button>
+  </div>
+</div>
+
+<div class="card hide" id="quiz">
+  <span class="tag" id="tag"></span>
+  <div id="qbody"></div>
+  <div class="msg" id="msg"></div>
+  <div class="btns">
+    <button class="b g" id="clr">🧹 ล้างคำตอบ</button>
+    <button class="b g hide" id="rep">🔄 เล่นข้อนี้ซ้ำ</button>
+    <button class="b" id="chk">ตรวจคำตอบ ✓</button>
+    <button class="b n hide" id="nxt">ข้อถัดไป ➜</button>
+  </div>
+</div>
+
+<div class="card end hide" id="end">
+  <div class="em" id="eem">🏆</div><h2 id="et">เก่งมาก!</h2><p id="esum"></p>
+  <div class="btns">
+    <button class="b" id="again">🔁 ทำส่วนนี้อีกครั้ง</button>
+    <button class="b g" id="home2">📚 เลือกส่วนอื่น</button>
+  </div>
+</div>
+</div>
+
+<script>
+/* ---------- data: 10 factory rules, three question sets ---------- */
+const THAI=[
+"ห้ามสูบบุหรี่ ดื่มเครื่องดื่มแอลกอฮอล์ หรือเสพสารเสพติดภายในพื้นที่ปฏิบัติงาน",
+"พนักงานต้องสวมเครื่องแบบและอุปกรณ์ป้องกันความปลอดภัยตามที่บริษัทกำหนด",
+"เมื่อเกิดอุบัติเหตุในการทำงาน พนักงานต้องรีบปฏิบัติการปฐมพยาบาลที่จำเป็น แจ้งต่อหัวหน้างาน และไปพบแพทย์ตามระเบียบ ห้ามปิดบังหรือชะลอการแจ้งเหตุ",
+"ในระหว่างเวลาปฏิบัติงาน พนักงานห้ามใช้โทรศัพท์มือถือส่วนตัว เว้นแต่จะได้รับอนุญาตจากหัวหน้างาน",
+"เมื่อพบว่าเครื่องจักรหรืออุปกรณ์เกิดความขัดข้อง พนักงานต้องรีบแจ้งหัวหน้างานทันที และหยุดใช้งานตามข้อกำหนด ห้ามซ่อมแซมเองโดยพลการ",
+"พนักงานต้องปฏิบัติตามเวลาการเข้างานและเลิกงานที่บริษัทกำหนด โดยไม่ได้รับอนุญาต ห้ามมาสายหรือออกก่อนเวลา",
+"พนักงานต้องปฏิบัติตามคำสั่งของหัวหน้างานที่ชอบด้วยกฎหมายและเกี่ยวข้องกับหน้าที่งานของตน",
+"พนักงานห้ามนำทรัพย์สินหรืออุปกรณ์ของบริษัทออกนอกสถานที่โดยไม่ได้รับอนุญาต",
+"เมื่อเกิดเหตุเพลิงไหม้หรือเหตุฉุกเฉินอื่น ๆ พนักงานต้องอพยพออกจากอาคารอย่างรวดเร็วตามเส้นทางอพยพที่กำหนดไปยังจุดรวมพลที่ปลอดภัย ห้ามใช้ลิฟต์โดยเด็ดขาด",
+"พนักงานต้องรักษาความลับทางธุรกิจของบริษัท และห้ามเปิดเผยข้อมูลของบริษัทแก่บุคคลภายนอกโดยไม่ได้รับอนุญาต"
+];
+
+/* Part 1 & 2 share the same blanked sentence + correct answers; Part 2 adds distractor options */
+const BLANKED=[
+ {text:"___1___在___2___内吸烟、饮酒或___3___。",
+  ans:{1:"禁止",2:"工作区域",3:"吸食毒品"},
+  opts:{1:["允许","建议","提醒"],2:["休息区域","停车区域","餐饮区域"],3:["使用手机","携带酒精","佩戴首饰"]}},
+ {text:"员工___1___按照公司规定穿着___2___，并佩戴___3___。",
+  ans:{1:"必须",2:"工作服",3:"安全防护用品"},
+  opts:{1:["可以","建议","禁止"],2:["便服","校服","雨衣"],3:["私人物品","办公用品","通讯设备"]}},
+ {text:"发生___1___时，员工应立即采取必要的___2___，向主管报告，并按照规定就医，不得___3___或延误。",
+  ans:{1:"工作事故",2:"急救措施",3:"隐瞒"},
+  opts:{1:["交通事故","财务纠纷","客户投诉"],2:["清洁措施","培训计划","会议安排"],3:["报告","记录","公开"]}},
+ {text:"___1___，员工不得使用___2___，除非获得主管___3___。",
+  ans:{1:"工作期间",2:"私人手机",3:"批准"},
+  opts:{1:["休息时间","节假日","下班以后"],2:["公司电脑","工作证件","安全帽"],3:["邀请","提醒","处罚"]}},
+ {text:"发现机器或设备出现___1___时，员工应立即向主管报告，并按照规定___2___，不得___3___维修。",
+  ans:{1:"故障",2:"停止使用",3:"擅自"},
+  opts:{1:["噪音","灰尘","异味"],2:["继续使用","加快维修","报告损失"],3:["立即","定期","统一"]}},
+ {text:"员工必须按照公司规定的时间___1___，___2___不得___3___或早退。",
+  ans:{1:"上下班",2:"未经批准",3:"迟到"},
+  opts:{1:["用餐","休假","培训"],2:["按照惯例","根据经验","依照习惯"],3:["加班","请假","出差"]}},
+ {text:"员工必须___1___主管___2___作出的、与其___3___有关的工作安排。",
+  ans:{1:"服从",2:"依法",3:"工作职责"},
+  opts:{1:["拒绝","忽视","修改"],2:["随意","私下","临时"],3:["个人爱好","家庭事务","休闲活动"]}},
+ {text:"___1___，员工不得将公司___2___或设备带离___3___。",
+  ans:{1:"未经批准",2:"财物",3:"工作场所"},
+  opts:{1:["按照规定","根据合同","依照惯例"],2:["文件模板","员工照片","会议记录"],3:["员工宿舍","培训教室","停车场"]}},
+ {text:"发生火灾等___1___时，员工应按照规定的___2___迅速撤离到指定的安全集合点，不得乘坐___3___。",
+  ans:{1:"紧急情况",2:"疏散路线",3:"电梯"},
+  opts:{1:["例行检查","日常会议","设备保养"],2:["上班路线","巡逻路线","送货路线"],3:["楼梯","安全出口","消防通道"]}},
+ {text:"员工必须保守公司的___1___，___2___不得向外部人员___3___公司信息。",
+  ans:{1:"商业秘密",2:"未经批准",3:"泄露"},
+  opts:{1:["员工手册","产品目录","工作计划"],2:["按照流程","通过审核","定期"],3:["更新","整理","备份"]}}
+];
+
+/* Part 3: same 10 sentences chunked into word groups (in correct order) */
+const CHUNKS=[
+ ["禁止","在工作区域内","吸烟、","饮酒","或吸食毒品。"],
+ ["员工","必须按照公司规定","穿着工作服，","并佩戴安全防护用品。"],
+ ["发生工作事故时，","员工应立即采取必要的急救措施，","向主管报告，","并按照规定就医，","不得隐瞒或延误。"],
+ ["工作期间，","员工不得使用私人手机，","除非获得主管批准。"],
+ ["发现机器或设备出现故障时，","员工应立即向主管报告，","并按照规定停止使用，","不得擅自维修。"],
+ ["员工必须按照公司规定的时间上下班，","未经批准","不得迟到或早退。"],
+ ["员工必须服从","主管依法作出的、","与其工作职责有关的","工作安排。"],
+ ["未经批准，","员工不得将公司财物或设备","带离工作场所。"],
+ ["发生火灾等紧急情况时，","员工应按照规定的疏散路线","迅速撤离到指定的安全集合点，","不得乘坐电梯。"],
+ ["员工必须保守公司的商业秘密，","未经批准","不得向外部人员泄露公司信息。"]
+];
+
+const PARTLABEL={1:['✏️','ส่วนที่ 1 · เติมคำ (พิมพ์คำตอบ)'],2:['🔘','ส่วนที่ 2 · เติมคำ (เลือกคำตอบ)'],3:['🧩','ส่วนที่ 3 · เรียงคำ']};
+
+const $=id=>document.getElementById(id);
+const sh=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const show=id=>['home','quiz','end'].forEach(x=>$(x).classList.toggle('hide',x!==id));
+
+let PART=1,i=0,ok=0,wrongAll=0,solved=false,busy=false;
+let sel2={},tiles3=[],slots3=[];
+
+document.querySelectorAll('.partbtn').forEach(b=>b.onclick=()=>{PART=+b.dataset.p;i=0;ok=0;wrongAll=0;show('quiz');load()});
+$('home2').onclick=()=>show('home');
+$('again').onclick=()=>{i=0;ok=0;wrongAll=0;show('quiz');load()};
+
+function N(){return PART===3?CHUNKS.length:BLANKED.length}
+
+function load(){
+  solved=false;busy=false;
+  const[ic,lab]=PARTLABEL[PART];$('tag').textContent=ic+' '+lab;
+  $('cnt').textContent=`ข้อ ${i+1} / ${N()} · ⭐ ${ok}`;$('bar').style.width=(i/N()*100)+'%';
+  $('msg').textContent='';$('nxt').classList.add('hide');$('rep').classList.add('hide');
+  $('chk').classList.remove('hide');$('clr').classList.remove('hide');
+  if(PART===1)loadP1(); else if(PART===2)loadP2(); else {loadP3();bindP3()}
+}
+function renderSentence(text,cls){
+  return text.replace(/___(\d)___/g,(m,n)=>`<span class="bn ${cls?cls(n):''}" data-bn="${n}">${n}</span>`);
+}
+
+/* ---------- Part 1: type the answer ---------- */
+function loadP1(){
+  const q=BLANKED[i];
+  $('qbody').innerHTML=`
+    <div class="sent">${renderSentence(q.text)}</div>
+    <div class="blanks">${Object.keys(q.ans).map(n=>`
+      <div class="blk"><label>คำตอบช่องที่ ${n}</label>
+      <input type="text" data-n="${n}" placeholder="พิมพ์คำตอบภาษาจีน" autocomplete="off"></div>`).join('')}</div>`;
+}
+function checkP1(){
+  const q=BLANKED[i];let allOk=true;
+  document.querySelectorAll('#qbody input').forEach(inp=>{
+    const n=inp.dataset.n,right=q.ans[n];
+    const good=inp.value.trim()===right;
+    inp.classList.toggle('ok',good);inp.classList.toggle('bad',!good);
+    if(!good)allOk=false;
+  });
+  return allOk;
+}
+
+/* ---------- Part 2: choose the answer ---------- */
+function loadP2(){
+  const q=BLANKED[i];sel2={};
+  $('qbody').innerHTML=`
+    <div class="sent">${renderSentence(q.text)}</div>
+    <div class="blanks">${Object.keys(q.ans).map(n=>{
+      const list=sh([q.ans[n],...q.opts[n]]);
+      return `<div class="blk"><label>คำตอบช่องที่ ${n}</label>
+      <div class="row" data-blk="${n}">${list.map(o=>`<button type="button" class="chipopt" data-v="${o}">${o}</button>`).join('')}</div></div>`;
+    }).join('')}</div>`;
+  document.querySelectorAll('.blk .row').forEach(row=>{
+    row.onclick=e=>{if(solved||busy)return;const b=e.target.closest('.chipopt');if(!b)return;
+      const n=row.dataset.blk;sel2[n]=b.dataset.v;
+      [...row.children].forEach(c=>c.classList.toggle('sel',c===b));
+    };
+  });
+}
+function checkP2(){
+  const q=BLANKED[i];let allOk=true;
+  Object.keys(q.ans).forEach(n=>{
+    const row=document.querySelector(`.blk .row[data-blk="${n}"]`);
+    const right=q.ans[n],chosen=sel2[n];
+    [...row.children].forEach(c=>{
+      c.classList.remove('ok','bad');
+      if(chosen===right&&c.dataset.v===right)c.classList.add('ok');
+      else if(chosen!==right&&c.dataset.v===chosen)c.classList.add('bad');
+    });
+    if(chosen!==right)allOk=false;
+  });
+  return allOk;
+}
+
+/* ---------- Part 3: arrange word groups ---------- */
+function loadP3(){
+  const chunks=CHUNKS[i];
+  let order;do{order=sh(chunks.map((_,k)=>k))}while(chunks.length>1&&order.every((v,k)=>v===k));
+  tiles3=order.map(k=>chunks[k]);slots3=chunks.map(()=>null);
+  $('qbody').innerHTML=`
+    <div class="ask"><div class="mascot" id="mas3">🐰</div><div class="bubble" id="th3"></div></div>
+    <div class="pilltrack" id="ans3"></div>
+    <div class="pillpool" id="pool3"></div>`;
+  $('th3').textContent=THAI[i];
+  renderP3();
+}
+function renderP3(){
+  const used=new Set(slots3);
+  $('ans3').innerHTML=slots3.map((k,s)=>`<button type="button" class="pill slotpill ${k!==null?'filled':''}" data-s="${s}">${k!==null?tiles3[k]:'···'}</button>`).join('');
+  $('pool3').innerHTML=tiles3.map((c,k)=>`<button type="button" class="pill ${used.has(k)?'ghost':''}" data-k="${k}" ${used.has(k)?'disabled':''}>${c}</button>`).join('');
+}
+function bindP3(){
+  $('pool3').onclick=e=>{if(solved||busy)return;const b=e.target.closest('[data-k]');if(!b)return;
+    const s=slots3.indexOf(null);if(s<0)return;slots3[s]=+b.dataset.k;renderP3()};
+  $('ans3').onclick=e=>{if(solved||busy)return;const b=e.target.closest('[data-s]');if(!b)return;
+    slots3[+b.dataset.s]=null;renderP3()};
+}
+let lastBadSlots=[];
+function checkP3(){
+  if(slots3.includes(null))return false;
+  const chunks=CHUNKS[i];let allOk=true;lastBadSlots=[];
+  const els=$('ans3').children;
+  slots3.forEach((k,s)=>{const good=tiles3[k]===chunks[s];if(!good){allOk=false;lastBadSlots.push(s);els[s].classList.add('bad')}});
+  if(allOk)[...els].forEach(x=>x.classList.add('ok'));
+  return allOk;
+}
+
+/* ---------- shared controls ---------- */
+$('clr').onclick=()=>{
+  if(solved||busy)return;
+  if(PART===1)document.querySelectorAll('#qbody input').forEach(x=>{x.value='';x.classList.remove('ok','bad')});
+  else if(PART===2){sel2={};document.querySelectorAll('.chipopt').forEach(c=>c.classList.remove('sel','ok','bad'))}
+  else {slots3=slots3.map(()=>null);renderP3()}
+  $('msg').textContent='';
+};
+$('rep').onclick=()=>{if(!busy)load()};
+$('chk').onclick=()=>{
+  if(solved||busy)return;
+  let good;
+  if(PART===1)good=checkP1();
+  else if(PART===2)good=checkP2();
+  else good=checkP3();
+  if(good){
+    solved=true;ok++;
+    $('msg').textContent=['เก่งมากกก! 🎉','ถูกต้องเป๊ะ! ✨','สุดยอดไปเลย 💖','เยี่ยมมาก! 🌟'][i%4];
+    $('chk').classList.add('hide');$('clr').classList.add('hide');
+    $('nxt').classList.remove('hide');$('rep').classList.remove('hide');
+    $('nxt').textContent=i===N()-1?'ดูผลคะแนน 🏆':'ข้อถัดไป ➜';
+    if(PART===1)document.querySelectorAll('#qbody input').forEach(x=>x.disabled=true);
+    if(PART===2)document.querySelectorAll('.chipopt').forEach(x=>x.disabled=true);
+    if(PART===3)document.querySelectorAll('#pool3 .pill').forEach(x=>x.disabled=true);
+    confetti();
+  }else{
+    wrongAll++;busy=true;
+    $('msg').textContent='ยังไม่ถูกนะ ลองดูช่องที่ขึ้นสีแดงแล้วแก้ใหม่ 💪';
+    setTimeout(()=>{
+      busy=false;
+      if(PART===3&&lastBadSlots.length){lastBadSlots.forEach(s=>slots3[s]=null);renderP3();bindP3()}
+    },1000);
+  }
+};
+$('nxt').onclick=()=>{if(i<N()-1){i++;load()}else finish()};
+function finish(){
+  show('end');$('bar').style.width='100%';$('cnt').textContent='เสร็จแล้ว!';
+  const p=ok/N();
+  $('eem').textContent=p===1?'🏆':p>=.8?'🌟':p>=.5?'🌿':'🌱';
+  $('et').textContent=p===1?'เต็มร้อยเลย!':p>=.8?'เก่งมากก!':p>=.5?'ผ่านแล้วนะ!':'สู้ๆ อีกนิด!';
+  $('esum').textContent=`ตอบถูก ${ok} จาก ${N()} ข้อ (ผิด ${wrongAll} ครั้ง)`;
+  confetti();
+}
+function confetti(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const e=['🌿','⭐','🍃','✨','🌸'];
+  for(let k=0;k<18;k++){const s=document.createElement('span');s.className='fx';s.textContent=e[k%5];
+    s.style.left=Math.random()*100+'vw';s.style.animationDelay=Math.random()*.5+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),2600)}
+}
+</script>
+</body>
+</html>
